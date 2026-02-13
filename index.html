@@ -11,14 +11,14 @@
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary: #001e2b;
+            --primary: #0c1927;
             /* Dark Blue */
-            --accent: #006699;
+            --accent: #8686ac;
             /* Light Blue */
-            --dark: #000000;
-            --light: #9fccdf;
-            --white: #ffffff;
-            --gray: #6b778c;
+            --dark: black;
+            --light: #e0e0eb;
+            --white: #f2f2f2;
+            --gray: #19324d;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -120,17 +120,6 @@
             animation: pulse-blue 2s infinite;
         }
 
-        .btn-primary:hover {
-            background: #0087bd;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            background: transparent;
-        }
 
         .btn-outline:hover {
             background: var(--accent);
@@ -308,7 +297,7 @@
 
         .hero-social-mini a:hover {
             transform: translateY(-5px) rotate(360deg);
-            color: white;
+            color: var(--primary);
         }
 
         /* --- STATS BOX --- */
@@ -734,12 +723,13 @@
 
         .btn-primary {
             background: var(--accent);
-            color: var(--primary);
+            color: white;
             box-shadow: 0 4px 15px rgba(253, 216, 53, 0.2);
         }
 
         .btn-primary:hover {
-            background: #fbc02d;
+            background: #19324d;
+            color: white;
             transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
@@ -903,10 +893,6 @@
             transition: var(--transition);
         }
 
-        .hero-social-mini a:hover {
-            transform: scale(1.2);
-            color: white;
-        }
 
         /* --- STATS BOX --- */
         .exp-box {
@@ -976,7 +962,7 @@
 
         .service-card:hover i {
             transform: scale(1.2) rotate(10deg);
-            color: #fbc02d;
+            color: #19324d;
         }
 
         /* --- CERTIFICATION GALLERY --- */
@@ -1281,7 +1267,7 @@
 
         .project-subtitle {
             font-size: 0.9rem;
-            color: var(--accent);
+            color: var(--primary);;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -1367,14 +1353,54 @@
                 margin-bottom: 15px;
             }
         }
+.scroll-indicator-container {
+    position: fixed;
+    top: 15vh; /* Starts slightly below the top */
+    right: 20px;
+    width: 60px;
+    height: 80vh; /* Spans most of the viewport height */
+    z-index: 9999;
+    pointer-events: none; /* User can click through it */
+}
+
+.scroll-svg {
+    width: 80%;
+    height: 100%;
+    fill: none;
+}
+
+.scroll-path {
+    stroke: rgba(0, 161, 224, 0.05); /* Very faint background track */
+    stroke-width: 3;
+}
+
+.scroll-path-fill {
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    /* This adds a "neon" glow effect as it fills */
+    filter: drop-shadow(0 0 5px rgba(0, 161, 224, 0.5));
+    transition: stroke-dashoffset 0.15s ease-out;
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator-container { display: none; }
+}
     </style>
 </head>
 
 <body>
-
+<div class="scroll-indicator-container">
+    <svg class="scroll-svg" viewBox="0 0 40 600" preserveAspectRatio="none">
+        <path class="scroll-path" d="M20,0 Q40,150 20,300 T20,600" />
+        <path class="scroll-path-fill" d="M20,0 Q40,150 20,300 T20,600" />
+    </svg>
+</div>
     <nav class="navbar">
         <div class="container">
-            <div class="logo" onclick="window.scrollTo(0,0)">TAUFIQ<strong>ALAM</strong></div>
+            <div class="logo" onclick="window.scrollTo(0,0)">TAUFIQ ALAM</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Profile</a></li>
@@ -1392,7 +1418,7 @@
         <div class="container">
             <div class="hero-text reveal">
                 <span class="sub-title">Expert Salesforce Developer</span>
-                <h1>Taufiq Alam</h1>
+                <h1>TAUFIQ ALAM</h1>
                 <p>4+ years of experience delivering end-to-end Salesforce solutions. Expert in Apex, LWC, Flows and complex REST/SOAP integrations.</p>
                 <div class="hero-btns" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
@@ -1552,9 +1578,9 @@
                         </div>
                         <div class="project-title-area">
                             <h3>Cloudwerx</h3>
-                            <span class="project-subtitle">Salesforce Developer</span>
+                            <span >Salesforce Developer</span>
                             <p style="margin-top: 10px; font-size: 0.85rem; color: var(--gray); font-weight: 600;">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px; color: var(--accent);"></i> Pune, Maharashtra
+                                <i class="fas fa-map-marker-alt" style="margin-right: 5px; color: var(--primary);"></i> Pune, Maharashtra
                             </p>
                         </div>
                     </div>
@@ -1677,7 +1703,7 @@
         <div class="contact-top">
             <div class="container">
                 <span class="sub-title reveal" style="color: white">Let's Connect</span>
-                <h2 style="color: white" class="reveal">Get In Touch</h2>
+                <h2 style="color: white" class="reveal">GET IN TOUCH</h2>
                 <div class="contact-cards">
                     <div class="c-card reveal"><i class="fas fa-phone"></i>
                         <h4>Phone</h4>
@@ -1714,7 +1740,7 @@
 
     <footer>
         <div class="container">
-            <div class="logo">TAUFIQ<strong>ALAM</strong></div>
+            <div class="logo"><strong>TAUFIQ ALAM</strong></div>
             <p>Specializing in High-Performance Salesforce Architectures.</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/alamtaufix-ece" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1777,6 +1803,18 @@
             alert("Thank you Taufiq! Your message has been sent successfully.");
             e.target.reset();
         });
+    window.addEventListener('scroll', () => {
+    const fill = document.querySelector('.scroll-path-fill');
+    
+    // Calculate how far down the page we are (0 to 1)
+    const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight));
+    
+    // 1000 represents the dasharray defined in CSS
+    const drawLength = 600 * scrollPercent;
+    
+    // Update the offset to "draw" the line
+    fill.style.strokeDashoffset = 1000 - drawLength;
+});
     </script>
 </body>
 
