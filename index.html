@@ -1388,6 +1388,85 @@
 @media (max-width: 768px) {
     .scroll-indicator-container { display: none; }
 }
+        /* ======================================= */
+/* MOBILE FIX – KEEP DESKTOP STRUCTURE */
+/* ======================================= */
+
+@media (max-width: 992px) {
+
+    /* Keep 2-column hero but reduce spacing */
+    .hero .container {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px !important;
+        align-items: center;
+    }
+
+    .hero-bg {
+        width: 70% !important;
+        height: 100% !important;
+        transform: skewX(-10deg) !important;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.2;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+
+    .hero-img img {
+        max-height: 320px !important;
+        box-shadow: 15px 15px 0px var(--accent);
+    }
+
+    /* SERVICES – maintain split layout */
+    .services-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 25px !important;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* EXPERIENCE / PROJECTS */
+    .project-inner {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .project-card {
+        padding: 25px !important;
+    }
+
+    /* CONTACT CARDS */
+    .contact-cards {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* FORM – stack properly but clean */
+    .form-box {
+        grid-template-columns: 1fr !important;
+    }
+
+    .form-content {
+        padding: 30px !important;
+    }
+
+    /* Prevent overflow anywhere */
+    html, body {
+        overflow-x: hidden !important;
+    }
+
+    .container {
+        padding: 0 15px !important;
+    }
+}
+
+        
     </style>
 </head>
 
@@ -1819,3 +1898,4 @@
 </body>
 
 </html>
+
